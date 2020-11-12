@@ -45,3 +45,16 @@ Installing firefox on both devices, logged in with the same account, lets you sh
 For the rest, KDE developped `KDE Connect` which does exactly that. It was ported to Gnome with [Gnome Connect](https://extensions.gnome.org/extension/1319/gsconnect/).
 
 The clipboard sync doesn't seem to work very reliably, and sometimes the connection is lost for some reason, but overall it's really cool.
+
+## Google Photo backup
+
+I use [gphotos-sync](https://github.com/gilesknap/gphotos-sync) to backup my photos _directly_ to my external hard drive.
+
+The only annoying bit is that it didn't find exactly how I could install it properly, so currently I made a `gphotos-sync` folder under ~/.local/bin, and a Pipenv environment in it with gphotos-sync installed.
+
+So to backup run
+```bash
+cd ~/.local/bin/gphotos-sync
+pipenv run gphotos-sync /media/gregnix/GregWD/Google\ Photo/
+```
+
