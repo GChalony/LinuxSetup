@@ -48,7 +48,7 @@ The clipboard sync doesn't seem to work very reliably, and sometimes the connect
 
 ## Google Photo backup
 
-I use [gphotos-sync](https://github.com/gilesknap/gphotos-sync) to backup my photos _directly_ to my external hard drive.
+I use [gphotos-sync](https://github.com/gilesknap/gphotos-sync) to backup my photos _directly_ to my external hard drive. It's nice because it also backs up album as folders of symlinks, which can be pretty convenient.
 
 The only annoying bit is that it didn't find exactly how I could install it properly, so currently I made a `gphotos-sync` folder under ~/.local/bin, and a Pipenv environment in it with gphotos-sync installed.
 
