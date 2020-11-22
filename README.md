@@ -58,3 +58,28 @@ cd ~/.local/bin/gphotos-sync
 pipenv run gphotos-sync /media/gregnix/GregWD/Google\ Photo/
 ```
 
+## Change boot animation
+
+When booting, linux calls a special program called `Plymouth` which display text or an animation while the kernel is loaded and other stuff happen. This animation (the default Ubuntu loading) can be changed by using a different theme.
+
+This [amazing repo](https://github.com/adi1090x/plymouth-themes) contains 80+ themes that can be used.
+
+To change theme:
+
+```shell
+# Copy theme to plymouth folder
+sudo cp -r mytheme /usr/share/plymouth/themes
+
+# Install theme (change <path_to_mytheme.plymouth>)
+sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/<path_to_mytheme.plymouth> 100
+
+# Select theme - this displays a list of installed themes, select yours
+sudo update-alternatives --config default.plymouth
+
+# Update initramfs
+sudo update-initramfs -u
+```
+
+:warning: Careful, if something isn't done properly (like setting the wrong path in update-alternatives as happened to me), you might break the startup. In that case, you can bypass Plymouth (called the splash screen):
+
+In GRUB, move to `Ubuntu`, then press `e`. This should let you edit the command. Go down to the line starting with linux, and remove the arguments `splash` and `quiet` (verbose mode for good measure). The Ctrl+e to start. Once successfully started, try to fix things, for example selecting a theme you know works from `sudo update-alternatives --config default.plymouth` output.
